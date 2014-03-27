@@ -5,11 +5,12 @@
 
 from sys import argv
 
-primes = [2]
-
 if (len(argv) > 1) and argv[1] >= 2:
-	ray = xrange(3,int(argv[1])+1,2)
-	for number in ray:
+        tocheck = range(3,int(argv[1]),2)
+        primes = [2]
+        maxstore = int(float(argv[1])**.5+1);
+
+	for number in tocheck:
 		sqrt = number**.5;
 		isprime = True
 		for prime in primes:
@@ -20,6 +21,8 @@ if (len(argv) > 1) and argv[1] >= 2:
 				break
 		if (isprime == True):
 			primes.append(number)
+                        for loop in xrange(number,maxstore,number):
+                                del tocheck[loop]
 			print number;
 	#print "You want primes? You got'em: " + str(primes)[1:-1]
 
