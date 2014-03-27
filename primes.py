@@ -6,25 +6,17 @@
 from sys import argv
 
 if (len(argv) > 1) and argv[1] >= 2:
-        tocheck = range(3,int(argv[1]),2)
-        primes = [2]
-        maxstore = int(float(argv[1])**.5+1);
+        biggest = int(argv[1]);
+        tocheck = range(0,biggest,1)
+        numprimes = 1;
 
-	for number in tocheck:
-		sqrt = number**.5;
-		isprime = True
-		for prime in primes:
-			if prime > sqrt:
-				break
-			if ((number % prime) == 0):
-				isprime = False
-				break
-		if (isprime == True):
-			primes.append(number)
-                        for loop in xrange(number,maxstore,number):
-                                del tocheck[loop]
-			print number;
-	#print "You want primes? You got'em: " + str(primes)[1:-1]
+	for number in xrange(3,biggest,2):
+                if (tocheck[number] != 0):
+                        numprimes += 1
+                        for loop in xrange(number,biggest,number):
+                                tocheck[loop] = 0
+        
+        print str(numprimes) + " primes found."
 
 else:
 	print "You lose, you lose, you lose!"
